@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'gloabls';
+@import 'nav';
+@import 'home';
+@import 'portfolio';
+@import 'about';
+@import 'contact';
+
+.blogPage {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.hide {
+  display: none;
+}
+.blogPageText {
+  padding: 3rem 0;
+}
