@@ -1,5 +1,5 @@
 import React from 'react';
-import '../dist/css/style.css';
+import '../dist/scss/_home.scss';
 import Man from '../dist/images/homeMan.svg';
 import Plant from '../dist/images/homePlant.svg';
 import Arrow from '../dist/images/homeArrow.svg';

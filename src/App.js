@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './dist/scss/globals.scss';
 import Nav from './Components/Nav';
 import Home from './Components/Home';
 import Portfolio from './Components/Portfolio';

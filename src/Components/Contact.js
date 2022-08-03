@@ -1,4 +1,5 @@
 import React from 'react';
+import '../dist/scss/_contact.scss';
 import banner from '../dist/images/contactBanner.jpg';
 const Contact = () => {
   return (

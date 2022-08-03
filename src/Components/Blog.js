@@ -1,4 +1,3 @@
-import React from 'react';
 import vadivelu from '../dist/images/vadivelu.jpg';
 import Nav from './Nav';
 const Blog = () => {

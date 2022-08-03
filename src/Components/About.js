@@ -1,4 +1,4 @@
-import React from 'react';
+import '../dist/scss/_about.scss';
 import vasanth from '../dist/images/vasanth.jpeg';
 
 const About = () => {

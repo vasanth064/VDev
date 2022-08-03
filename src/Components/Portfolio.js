@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../dist/scss/_portfolio.scss';
 import { pros } from '../Data/projects';
 
 const Portfolio = () => {

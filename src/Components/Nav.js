@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../dist/scss/_nav.scss';
 import logo from '../dist/images/homeLogoMobile.svg';
 import menu from '../dist/images/homeHamburger.svg';
 import close from '../dist/images/close.svg';
