@@ -4,6 +4,7 @@ html {
   font-size: 62.5%;
   font-family: 'Noto Sans TC', sans-serif;
   scroll-behavior: smooth;
+  scroll-padding-top: 7.5vh;
 }
 *,
 *::after,
@@ -19,4 +20,21 @@ li {
   padding: 0;
   margin: 0;
   list-style-type: none;
+}
+.theme {
+  width: 2rem;
+  height: auto;
+}
+.themeContainer {
+  position: absolute;
+  top: 10rem;
+  display: grid;
+  place-items: center;
+  right: 2.5rem;
+  z-index: 101;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 5rem;
+  background: white;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }

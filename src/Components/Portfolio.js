@@ -1,19 +1,44 @@
 import React, { useState, useEffect } from 'react';
+import '../dist/scss/_variables.scss';
 import '../dist/scss/_portfolio.scss';
+
 import { pros } from '../Data/projects';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../Configs/firebaseConfig';
 
 const Portfolio = () => {
   const [tag, setTag] = useState('ALL');
-
   const [filteredData, setFilteredData] = useState([]);
+  const [projects, setProjects] = useState(null);
+  const [tags, setTags] = useState(null);
 
-  const tags = ['ALL', ...new Set(pros.map((i) => i.tag))];
+  useEffect(() => {
+    const dataRef = collection(db, 'projects');
+    const unsubscribe = onSnapshot(dataRef, (snapshot) => {
+      setProjects(snapshot.docs.map((doc) => ({ ...doc.data(), uid: doc.id })));
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    const dataRef = collection(db, 'projectTags');
+    const unsubscribe = onSnapshot(dataRef, (snapshot) => {
+      setTags(snapshot.docs.map((doc) => ({ ...doc.data(), uid: doc.id })));
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     tag === 'ALL'
-      ? setFilteredData(pros)
-      : setFilteredData(pros.filter((data) => data.tag === tag));
-  }, [tag]);
+      ? setFilteredData(projects)
+      : setFilteredData(
+          projects.filter((data) => data.projectCategory === tag)
+        );
+  }, [tag, projects, tags]);
 
   const TagTitle = ({ name }) => {
     return (
@@ -28,44 +53,52 @@ const Portfolio = () => {
   };
 
   return (
-    <>
-      <div className='portfolio portfolio--dark' id='portfolio'>
-        <h2 className='portfolio__title portfolio__title--dark'>PORTFOLIO</h2>
-        <div className='catg'>
-          {tags.map((data) => (
-            <TagTitle key={tags.indexOf(data)} name={data} />
-          ))}
+    projects &&
+    tags && (
+      <>
+        <div className='portfolio portfolio--dark' id='portfolio'>
+          <h2 className='portfolio__title portfolio__title--dark'>PORTFOLIO</h2>
+          <div className='catg'>
+            {tags[0].tags.map((data) => (
+              <TagTitle key={data} name={data} />
+            ))}
+          </div>
+          <div className='projects'>
+            {filteredData.map((data) => (
+              <Project key={data.uid} {...data} />
+            ))}
+          </div>
         </div>
-        <div className='projects'>
-          {filteredData.map((data) => (
-            <Project key={data.id} {...data} />
-          ))}
-        </div>
-      </div>
-    </>
+      </>
+    )
   );
 };
 
-const Project = ({ link, image, code, name }) => {
+const Project = ({
+  projectBanner,
+  projectBannerAlt,
+  projectLink,
+  projectStack,
+}) => {
   let i = 1;
   return (
     <>
       <div className='project'>
         <a
-          href={link}
+          href={projectLink}
           target='_blank'
           rel='noopener noreferrer'
           className='project__link'>
           <img
-            src={image}
-            alt={name}
+            src={projectBanner}
+            alt={projectBannerAlt}
             width='100%'
             height='100%'
             className='project__image'
           />
         </a>
         <div className='attr'>
-          {code.map((codeName) => {
+          {projectStack.map((codeName) => {
             return (
               <div className='attr__code' key={i++}>
                 <h4>{codeName}</h4>

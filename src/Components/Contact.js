@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import '../dist/scss/_variables.scss';
 import '../dist/scss/_contact.scss';
-import banner from '../dist/images/contactBanner.jpg';
-const Contact = () => {
+import { addData } from '../Helpers/FirestoreHelper';
+
+const Contact = ({ data }) => {
+  let cData = data.contact;
+  let sData = data.socialLinks;
+  const [formData, setFormData] = useState({
+    email: '',
+    message: '',
+  });
+  const handleInputChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setFormData((values) => ({ ...values, [name]: value }));
+  };
   return (
     <>
       <div className='contact' id='contact'>
@@ -10,9 +23,16 @@ const Contact = () => {
         <div className='contact__container'>
           <form
             name='contact'
-            method='post'
             className='form form--dark'
-            action='/contact'>
+            onSubmit={async (e) => {
+              e.preventDefault();
+              await addData('contactMessages', formData);
+              setFormData({
+                email: '',
+                message: '',
+              });
+              e.currentTarget.reset();
+            }}>
             <div className='formContainer'>
               <input type='hidden' name='form-name' value='contact' />
               <div className='form__group'>
@@ -25,7 +45,9 @@ const Contact = () => {
                   type='email'
                   id='email'
                   name='email'
+                  value={formData.email}
                   placeholder='E MAIL'
+                  onChange={handleInputChange}
                   className='form__input'
                   required
                 />
@@ -40,6 +62,8 @@ const Contact = () => {
                   required
                   id='message'
                   name='message'
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder='MESSAGE'
                   className='form__txtarea'></textarea>
               </div>
@@ -49,7 +73,29 @@ const Contact = () => {
                 </button>
               </div>
             </div>
-            <img src={banner} alt='banner' className='banner' />
+
+            <div className='banner'>
+              <img
+                src={cData.bannerImg}
+                alt={cData.bannerImgAlt}
+                className='banner__img'
+              />
+              <div className='banner__social'>
+                {sData.map((item, index) => (
+                  <a href={item.link} key={index}>
+                    <div className='banner__social__container'>
+                      <div className='banner__social__container__link'>
+                        <img
+                          className='banner__social_container__img'
+                          alt={item.platformName}
+                          src={item.platformIcon}
+                        />
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
           </form>
         </div>
         <div className='footer'>

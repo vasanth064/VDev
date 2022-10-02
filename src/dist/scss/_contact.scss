@@ -4,11 +4,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   &__title {
     font-size: 2.8rem;
     font-weight: bold;
-    color: #60118c;
-    padding-top: 10rem;
+    color: $purple;
+    padding-top: 5rem;
     text-align: center;
     margin-bottom: 2rem;
   }
@@ -88,7 +90,7 @@
     font-family: 'Noto Sans TC', sans-serif;
   }
   &__btn {
-    background: #60118c;
+    background: $purple;
     border-radius: 5rem;
     border: none;
     outline: none;
@@ -106,10 +108,38 @@
   }
 }
 .banner {
-  width: 35rem;
   height: 100%;
-  object-fit: cover;
-  border-top-right-radius: 10rem;
+  position: relative;
+  &__img {
+    width: 35rem;
+    height: 100%;
+    object-fit: cover;
+    border-top-right-radius: 10rem;
+  }
+  &__social {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    align-items: center;
+    &__container {
+      background: $purple;
+      padding: 2rem;
+      border-radius: 1.2rem;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+      &__link {
+        line-height: 0;
+      }
+      &__img {
+        width: auto;
+        height: 1.7rem;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 920px) {
@@ -123,8 +153,10 @@
       width: 100%;
     }
   }
-  .contact__container {
-    width: 100%;
+  .contact {
+    &__container {
+      width: 100%;
+    }
   }
   .formContainer {
     margin: 0;

@@ -1,7 +1,10 @@
+import '../dist/scss/_variables.scss';
 import '../dist/scss/_about.scss';
-import vasanth from '../dist/images/vasanth.jpeg';
+import vasanth from '../dist/images/webp_vasanth.webp';
+import { useState } from 'react';
 
-const About = () => {
+const About = ({ data }) => {
+  const [aData, setAData] = useState(data.about);
   const Textcircle = (props) => {
     const { Text, Size, Color, Border } = props;
 
@@ -24,7 +27,11 @@ const About = () => {
     return (
       <>
         <div className='about__circle'>
-          <img src={vasanth} alt='myself' className='about__image' />
+          <img
+            src={aData.photo}
+            alt={aData.photoAlt}
+            className='about__image'
+          />
         </div>
       </>
     );
@@ -33,17 +40,17 @@ const About = () => {
   return (
     <>
       <div className='about about--dark' id='about'>
-        <h2 className='about__title about__title--dark'>ABOUT ME</h2>
+        <h2 className='about__title about__title--dark'>{aData.title}</h2>
         <div className='about__mob'>
           <Textcircle
-            Text='Vasanth, A 18 year old, Full-stack developer from India. I started learning frontend development from my secondary education.'
+            Text='Vasanth, A Full-stack developer from India. I started learning frontend development from my secondary education.'
             Size='25rem'
             Color='#ffffff'
             Border='3px dashed #8c1864'
           />
           <Imgcircle />
           <Textcircle
-            Text='I developed applications by turning my ideas and visions into websites. As of now I am continueing my learning process. '
+            Text='I developed applications by turning my ideas into visions into websites.'
             Size='25rem'
             Color='#ffffff'
             Border='3px dashed #8c1864'
@@ -51,19 +58,15 @@ const About = () => {
         </div>
 
         <div className='about__lap'>
-          <img src={vasanth} alt='vasanth' className='about__lapimage' />
+          <img
+            src={aData.photo}
+            alt={aData.photo}
+            className='about__lapimage'
+          />
           <div className='about__data'>
-            <p className='para0'>Myself..,</p>
+            <p className='para0'>{aData.heading}</p>
             <br></br>
-            <p className='para1'>
-              Vasanth, A 18 year old, Full-stack developer from India. I started
-              learning frontend development from my secondary education where I
-              got more intrest in full-stack development and made it a hobby to
-              learn other web development programming languages both front-end
-              and back-end. I developed applications by turning my ideas and
-              visions into websites. As of now I am continueing my learning
-              process as pursing a diploma in Computer Engineering.
-            </p>
+            <p className='para1'>{aData.content}</p>
           </div>
         </div>
       </div>
