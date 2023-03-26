@@ -1,0 +1,33 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  box-sizing: border-box;
+  /* font-family: 'Pacifico', cursive; */
+  font-family: 'Roboto', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.active {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 1;
+}
+.notActive {
+  display: none;
+}

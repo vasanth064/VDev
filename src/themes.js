@@ -1,56 +1,19 @@
-import { createGlobalStyle } from 'styled-components';
 
 export const light = {
-  color: '#161838',
-  titlecolor: '#60118C',
+  name: 'light',
+  color: '#000000',
   backgroundColor: '#fefefe',
-  backgroundSize: '20%',
+  secondaryColor: '#FEFEFF',
+  contactBackground:
+    'linear-gradient(231.95deg, rgba(183, 92, 213, 1) -0.03%, rgba(183, 92, 213, 0.25) -0.02%, rgba(217, 114, 79, 1) 100.03%);',
 };
 
 export const dark = {
+  name: 'dark',
   color: '#ffffff',
-  titlecolor: '#ffffff',
-  backgroundColor: '#6f6f6f',
-  backgroundSize: '20%',
+  backgroundColor: '#1E1E1E',
+  secondaryColor: '#282828',
+  contactBackground:
+    'linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(231.95deg, #B75CD5 -0.03%, #FF6D3C 100.03%);',
 };
 
-export const GlobalStyles = createGlobalStyle`
-
-@media only screen and (max-width: 960px) {
-    .nav__links{
-        background-color: ${(props) => props.theme.backgroundColor};
-    }
-
-    .nav__links--item{
-        color: ${(props) => props.theme.color};
-    }
-}
-
-.home {
-    background: ${(props) => props.theme.background};
-    color: ${(props) => props.theme.color};
-    background-size: ${(props) => props.theme.backgroundSize};
-}
-.home__title, .portfolio__title, .about__title, .contact__title{
-        color: ${(props) => props.theme.titlecolor};
-}
-.portfolio {
-    background-color: ${(props) => props.theme.backgroundColor};
-    color: ${(props) => props.theme.color};
-}
-
-.about{
-    background: ${(props) => props.theme.background};
-    color: ${(props) => props.theme.color};
-    background-size: ${(props) => props.theme.backgroundSize};
-}
-
-.contact{
-    background-color: ${(props) => props.theme.backgroundColor};
-    color: ${(props) => props.theme.color};
-}
-.blogPage{
-    background-color:${(props) => props.theme.backgroundColor};
-    color: ${(props) => props.theme.color};
-}
-`;
