@@ -1,9 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import lightbg from './dist/images/webp_bg_white.webp';
-import darkbg from './dist/images/webp_bg_dark.webp';
 
 export const light = {
-  background: 'url(' + lightbg + ')',
   color: '#161838',
   titlecolor: '#60118C',
   backgroundColor: '#fefefe',
@@ -11,7 +8,6 @@ export const light = {
 };
 
 export const dark = {
-  background: 'url(' + darkbg + ')',
   color: '#ffffff',
   titlecolor: '#ffffff',
   backgroundColor: '#6f6f6f',

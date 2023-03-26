@@ -1,10 +1,4 @@
 import React, { useState } from 'react';
-import '../dist/scss/_variables.scss';
-import '../dist/scss/_nav.scss';
-
-import logo from '../dist/images/homeLogoMobile.svg';
-import menu from '../dist/images/homeHamburger.svg';
-import close from '../dist/images/close.svg';
 import { Link } from 'react-router-dom';
 
 const Nav = ({ hideOther, data }) => {
@@ -15,8 +9,6 @@ const Nav = ({ hideOther, data }) => {
   return (
     <>
       <div className='header'>
-        <img src={logo} alt='V Dev' className='header__title' />
-
         <div className='nav'>
           <ul className={nav ? 'nav__links active' : 'nav__links'}>
             <div className='navListContainer'>
@@ -32,12 +24,7 @@ const Nav = ({ hideOther, data }) => {
               ))}
             </div>
           </ul>
-          <img
-            src={nav ? close : menu}
-            alt='menu'
-            className='nav__menu'
-            onClick={showNav}
-          />
+
           <Link to='/blog' className={hideOther ? 'hide' : ''}>
             <button
               className={nav ? 'nav__btn activeBtn' : 'nav__btn'}
