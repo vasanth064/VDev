@@ -1,60 +1,17 @@
-import { createGlobalStyle } from 'styled-components';
-import lightbg from './dist/images/webp_bg_white.webp';
-import darkbg from './dist/images/webp_bg_dark.webp';
-
 export const light = {
-  background: 'url(' + lightbg + ')',
-  color: '#161838',
-  titlecolor: '#60118C',
+  name: 'light',
+  color: '#000000',
   backgroundColor: '#fefefe',
-  backgroundSize: '20%',
+  secondaryColor: '#FEFEFF',
+  contactBackground: 'rgba(255, 255, 255, 0.25)',
+  hover: 'rgba(35,39,47,.05)',
 };
 
 export const dark = {
-  background: 'url(' + darkbg + ')',
+  name: 'dark',
   color: '#ffffff',
-  titlecolor: '#ffffff',
-  backgroundColor: '#6f6f6f',
-  backgroundSize: '20%',
+  backgroundColor: '#1E1E1E',
+  secondaryColor: '#282828',
+  contactBackground: 'rgba(40, 40, 40, 0.65)',
+  hover: 'rgba(1,1,1,0.1)',
 };
-
-export const GlobalStyles = createGlobalStyle`
-
-@media only screen and (max-width: 960px) {
-    .nav__links{
-        background-color: ${(props) => props.theme.backgroundColor};
-    }
-
-    .nav__links--item{
-        color: ${(props) => props.theme.color};
-    }
-}
-
-.home {
-    background: ${(props) => props.theme.background};
-    color: ${(props) => props.theme.color};
-    background-size: ${(props) => props.theme.backgroundSize};
-}
-.home__title, .portfolio__title, .about__title, .contact__title{
-        color: ${(props) => props.theme.titlecolor};
-}
-.portfolio {
-    background-color: ${(props) => props.theme.backgroundColor};
-    color: ${(props) => props.theme.color};
-}
-
-.about{
-    background: ${(props) => props.theme.background};
-    color: ${(props) => props.theme.color};
-    background-size: ${(props) => props.theme.backgroundSize};
-}
-
-.contact{
-    background-color: ${(props) => props.theme.backgroundColor};
-    color: ${(props) => props.theme.color};
-}
-.blogPage{
-    background-color:${(props) => props.theme.backgroundColor};
-    color: ${(props) => props.theme.color};
-}
-`;
