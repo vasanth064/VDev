@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
+  ContentBody,
   ContentHeader,
   ContentSection,
   PrimaryButton,
@@ -12,15 +13,12 @@ const Container = styled.section`
   flex-direction: column;
   padding: 15px;
   gap: 15px;
+  @media screen and (min-width: 990px) {
+    flex-direction: row-reverse;
+    height: 90vh;
+  }
 `;
-const ContentBody = styled.p`
-  text-align: justify;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: 0.01em;
-`;
+
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,12 +31,26 @@ const ImageSection = styled.img`
   width: auto;
   object-position: 0 30%;
   object-fit: cover;
+
+  @media screen and (min-width: 760px) {
+    object-position: 75% 0;
+    width: 35vw;
+    min-height: 100%;
+  }
+  @media screen and (max-width: 990px) {
+    width: 100%;
+    object-position: 100% 25%;
+  }
 `;
 const ButtonGroup = styled.div`
   padding: 15px 15px;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media screen and (min-width: 760px) {
+    flex-direction: row;
+    margin-top: auto;
+  }
 `;
 
 function Home({ data }) {
@@ -56,7 +68,8 @@ function Home({ data }) {
         <ContentContainer>
           <ContentHeader>
             Hey, I'm Vasanth, a <b>Full Stack Developer</b> with lots of hands
-            on Experience
+            on
+            <p>Experience 👨‍💻</p>
           </ContentHeader>
           <ContentBody>
             I am a web developer specializing in building dynamic and responsive
@@ -66,7 +79,11 @@ function Home({ data }) {
           </ContentBody>
         </ContentContainer>
         <ButtonGroup>
-          <PrimaryButton>
+          <PrimaryButton
+            onClick={() =>
+              (window.location.href =
+                'https://drive.google.com/uc?export=download&id=1sj9WJzNAxSf8xcOJ-KaUP3CT8h2UVJdA')
+            }>
             Resume
             <span>
               <AiOutlineDownload />

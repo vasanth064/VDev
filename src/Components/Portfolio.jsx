@@ -15,6 +15,12 @@ const ProjectContainer = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  @media screen and (min-width: 760px) {
+    & img {
+      height: 100%;
+      width: 600px;
+    }
+  }
 `;
 const StackContainer = styled.div`
   position: absolute;
@@ -42,6 +48,12 @@ const Stack = styled.div`
     line-height: 14px;
     color: ${(props) => props.theme.color};
   }
+  @media screen and (min-width: 760px) {
+    padding: 10px 20px;
+    & > p {
+      font-size: 16px;
+    }
+  }
 `;
 const AnchorLink = styled.a`
   color: ${(props) => props.theme.color};
@@ -57,6 +69,10 @@ const AnchorLink = styled.a`
   right: 10px;
   & svg {
     stroke-width: 1;
+  }
+  @media screen and (min-width: 760px) {
+    padding: 20px;
+    font-size: 17px;
   }
 `;
 
@@ -136,8 +152,14 @@ const CategoryContainer = styled.div`
 const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+
+  @media screen and (min-width: 760px) {
+    flex-direction: row;
+  }
 `;
 const Container = styled.section`
   display: flex;

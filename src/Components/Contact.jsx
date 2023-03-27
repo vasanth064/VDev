@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { addData } from '../Helpers/FirestoreHelper';
 import styled from 'styled-components';
 import {
+  ContentBody,
   ContentHeader,
   ContentSection,
   PrimaryButton,
@@ -11,65 +12,109 @@ import { MdEmail } from 'react-icons/md';
 import { RiSendPlaneFill } from 'react-icons/ri';
 
 const Container = styled.section`
-  display: flex;
-  flex-direction: column;
   padding: 15px;
   gap: 15px;
+  ${(props) => props.theme.secondaryColor};
+  @media screen and (min-width: 760px) {
+    flex-direction: row;
+    padding: 30px;
+    gap: 30px;
+  }
 `;
 
 const ImageSection = styled.div`
   position: relative;
-
-  & img {
-    height: 25vh;
-    object-fit: cover;
-    width: 100%;
-    border-radius: 15px;
-  }
+  background: url('https://firebasestorage.googleapis.com/v0/b/vdev-ed27e.appspot.com/o/vdev%2Fbg.png?alt=media&token=6d4e892c-522b-4532-a980-c834c858e336');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
 `;
 const ButtonGroup = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   gap: 30px;
+  justify-content: center;
+  @media screen and (min-width: 760px) {
+    flex-direction: column-reverse;
+  }
 `;
-
-const ContactForm = styled.form`
+// const FormContainer = styled.div`
+//   color: ${(props) => props.theme.contactColor};
+//   border-radius: 15px;
+//   padding: 30px 15px;
+//   @media screen and (min-width: 760px) {
+//     padding: 30px;
+//   }
+// `;
+// const ContactForm = styled.form`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 30px;
+//   padding: 30px 0;
+//   align-items: center;
+//   @media screen and (min-width: 760px) {
+//     width: 60vw;
+//   }
+// `;
+// const InputGroup = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 15px;
+// `;
+// const Label = styled.label`
+//   display: block;
+//   @media screen and (min-width: 760px) {
+//     font-size: 18px;
+//   }
+// `;
+// const Input = styled.input`
+//   font-family: inherit;
+//   display: block;
+//   border-radius: 15px;
+//   padding: 15px 20px;
+//   border: 2px solid black;
+//   outline: none;
+//   font-size: 16px;
+//   width: 100%;
+//   @media screen and (min-width: 760px) {
+//     font-size: 18px;
+//     padding: 20px 25px;
+//   }
+// `;
+// const TextArea = styled.textarea`
+//   display: block;
+//   font-family: inherit;
+//   font-size: 16px;
+//   padding: 15px 20px;
+//   border-radius: 15px;
+//   padding: 10px 15px;
+//   border: 2px solid black;
+//   outline: none;
+//   width: 100%;
+//   @media screen and (min-width: 760px) {
+//     font-size: 18px;
+//     padding: 20px 25px;
+//   }
+// `;
+const FlexContainer = styled.div`
   display: flex;
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  justify-content: space-around;
+  background: ${(props) => props.theme.contactBackground};
+  padding: 30px 15px;
   flex-direction: column;
-  gap: 15px;
-  padding: 15px 0;
-`;
-const InputGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-const Label = styled.label`
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 28px;
-`;
-const Input = styled.input`
-  border: 1.5px solid black;
-  padding: 10px 15px;
-  border-radius: 50px;
-  outline: none;
-  font-size: 18px;
-  line-height: 24px;
-`;
-const TextArea = styled.textarea`
-  border: 1.5px solid black;
+  gap: 30px;
   border-radius: 15px;
-  padding: 10px 15px;
-  outline: none;
-  font-size: 18px;
-  line-height: 24px;
-`;
+  color: ${(props) => props.theme.color};
 
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+  }
+`;
 const Footer = styled.footer`
   margin-top: 30px;
   display: flex;
@@ -83,8 +128,7 @@ const Footer = styled.footer`
 const Contact = ({ data }) => {
   let cData = data.contact;
   let sData = data.socialLinks;
-  console.log(cData);
-  console.log(sData);
+
   const [formData, setFormData] = useState({
     email: '',
     message: '',
@@ -99,44 +143,54 @@ const Contact = ({ data }) => {
     <>
       <Container id='contact'>
         <ImageSection>
-          <img
-            src='https://firebasestorage.googleapis.com/v0/b/vdev-ed27e.appspot.com/o/vdev%2F20849707_6364981.jpg?alt=media&token=b36a76e0-5c33-4300-8d62-40c0bb4a64bc'
-            alt='Presentation'
-          />
-          <ButtonGroup>
-            <PrimaryButton
-              onClick={() =>
-                (window.location.href = 'mailto:vasanthvdev@gmail.com')
-              }>
-              Email me
-              <span>
-                <MdEmail />
-              </span>
-            </PrimaryButton>
-            <SocialButtons data={sData} />
-          </ButtonGroup>
+          <FlexContainer>
+            <Container>
+              <ContentHeader style={{ width: '23ch', paddingBottom: '15px' }}>
+                I'd Love to hear from you !
+              </ContentHeader>
+              <ContentBody>
+                Feel free to reach out for collaborations or just a friendly
+                hello 👋
+              </ContentBody>
+            </Container>
+
+            <ButtonGroup>
+              <PrimaryButton
+                onClick={() =>
+                  (window.location.href = 'mailto:vasanthvdev@gmail.com')
+                }>
+                Email me
+                <span>
+                  <MdEmail />
+                </span>
+              </PrimaryButton>
+              <SocialButtons data={sData} />
+            </ButtonGroup>
+
+            {/* <FormContainer>
+              <ContactForm autoComplete='off'>
+                <InputGroup>
+                  <Label for='email'>Email</Label>
+                  <Input
+                    name='email'
+                    type='email'
+                    required
+                    placeholder='Enter your Email'
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <Label for='name'>Message</Label>
+                  <TextArea
+                    rows='8'
+                    placeholder='Enter your Message'
+                    required
+                  />
+                </InputGroup>
+                <PrimaryButton>Send Message</PrimaryButton>
+              </ContactForm>
+            </FormContainer> */}
+          </FlexContainer>
         </ImageSection>
-        <ContentSection contact='true'>
-          <ContentHeader size='32px' style={{ padding: '15px 0' }}>
-            Contact Me
-          </ContentHeader>
-          <ContactForm>
-            <InputGroup>
-              <Label>Email</Label>
-              <Input type='email' required />
-            </InputGroup>
-            <InputGroup>
-              <Label>Message</Label>
-              <TextArea rows={6} />
-            </InputGroup>
-            <PrimaryButton>
-              Send Message
-              <span>
-                <RiSendPlaneFill />
-              </span>
-            </PrimaryButton>
-          </ContactForm>
-        </ContentSection>
       </Container>
 
       <Footer>

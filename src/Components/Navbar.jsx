@@ -27,13 +27,20 @@ const ThemeIcon = styled.button`
   margin-left: auto;
   font-size: 24px;
   line-height: 0;
-  padding: 10px;
   background: transparent;
   border: none;
+  padding: 15px;
   & > svg > path:nth-child(2) {
     color: #f9a825;
   }
   z-index: 2;
+  &:hover {
+    background: ${(props) => props.theme.hover};
+  }
+  &:focus {
+    background: ${(props) => props.theme.hover};
+  }
+  border-radius: 50px;
 `;
 const NavTitle = styled.p`
   font-family: 'Pacifico';
@@ -42,10 +49,13 @@ const NavTitle = styled.p`
   font-size: 24px;
   line-height: 64px;
   color: ${(props) => props.theme.color};
+
+  @media screen and (min-width: 760px) {
+    font-size: 36px;
+  }
 `;
 const NavItems = styled.ul`
   background: ${(props) => props.theme.backgroundColor};
-
   @media screen and (min-width: 760px) {
     margin-left: 30px;
     display: flex;
@@ -57,12 +67,15 @@ const NavItem = styled.li`
   font-weight: 400;
   font-size: 22px;
   line-height: 24px;
-  padding: 15px 25px;
+  padding: 15px 10px;
+  margin: 0 10px;
+  border-radius: 50px;
 `;
 
 const Navbar = ({ hideOther, data, themeToggle, theme }) => {
   const [nav, setNav] = useState(false);
   const toggleNav = () => setNav(!nav);
+  const hideNav = () => setNav(false);
   const nData = data.navigation;
 
   return (
@@ -77,13 +90,13 @@ const Navbar = ({ hideOther, data, themeToggle, theme }) => {
       </ThemeIcon>
       <MenuIcon onClick={toggleNav}>{nav ? <CgClose /> : <FiMenu />}</MenuIcon>
       <NavItems className={nav ? 'active' : 'notActive'}>
-        <a href='#home' onClick={toggleNav}>
+        <a href='#home' onClick={hideNav}>
           <NavItem>Home</NavItem>
         </a>
-        <a href='#projects' onClick={toggleNav}>
+        <a href='#projects' onClick={hideNav}>
           <NavItem>Projects</NavItem>
         </a>
-        <a href='#contact' onClick={toggleNav}>
+        <a href='#contact' onClick={hideNav}>
           <NavItem>Contact</NavItem>
         </a>
       </NavItems>

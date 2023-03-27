@@ -7,7 +7,11 @@ import styled from 'styled-components';
 const SocialButtonGroup = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   gap: 15px;
+  @media screen and (min-width: 760px) {
+    flex-direction: ${(props) => (props.direction ? props.direction : 'row')};
+  }
 `;
 
 const SocialButton = styled.a`
@@ -19,6 +23,7 @@ const SocialButton = styled.a`
   color: black;
   justify-content: center;
   padding: 18px;
+  width: fit-content;
   & svg {
     width: 1.5em;
     height: auto;
@@ -50,9 +55,9 @@ const icons = {
   youtube: <BsYoutube />,
 };
 
-const SocialButtons = ({ data }) => {
+const SocialButtons = ({ data, flex }) => {
   return (
-    <SocialButtonGroup>
+    <SocialButtonGroup direction={flex}>
       {data.map((item, index) => (
         <SocialButton
           key={index}
