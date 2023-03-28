@@ -91,6 +91,8 @@ body{
     background: ${(props) => props.theme.backgroundColor};
 }
 
-
+*{
+  outline: 1px solid red;
+}
 
 `;

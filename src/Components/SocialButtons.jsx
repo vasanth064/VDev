@@ -36,6 +36,12 @@ const SocialButton = styled.a`
     background: ${(props) => (props.background ? props.background : 'black')};
     color: white;
   }
+  @media screen and (max-width: 360px) {
+    padding: 14px;
+    & svg {
+      width: 1.2em;
+    }
+  }
 `;
 
 const backgrounds = {

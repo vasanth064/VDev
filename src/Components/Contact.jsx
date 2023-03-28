@@ -145,7 +145,8 @@ const Contact = ({ data }) => {
         <ImageSection>
           <FlexContainer>
             <Container>
-              <ContentHeader style={{ width: '23ch', paddingBottom: '15px' }}>
+              <ContentHeader
+                style={{ maxWidth: '23ch', paddingBottom: '15px' }}>
                 I'd Love to hear from you !
               </ContentHeader>
               <ContentBody>
