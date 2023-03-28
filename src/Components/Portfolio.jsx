@@ -169,7 +169,7 @@ const Container = styled.section`
 `;
 
 const Portfolio = () => {
-  const [tag, setTag] = useState('ALL');
+  const [tag, setTag] = useState('All');
   const [filteredData, setFilteredData] = useState([]);
   const [projects, setProjects] = useState(null);
   const [tags, setTags] = useState(null);
@@ -195,7 +195,7 @@ const Portfolio = () => {
   }, []);
 
   useEffect(() => {
-    tag === 'ALL'
+    tag === 'All'
       ? setFilteredData(projects)
       : setFilteredData(
           projects.filter((data) => data.projectCategory === tag)
