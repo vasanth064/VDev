@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../Configs/firebaseConfig';
 import styled from 'styled-components';
-import { BsArrowUpRight } from 'react-icons/bs';
+import { BsGithub } from 'react-icons/bs';
 
 const ProjectContainer = styled.div`
   position: relative;
@@ -63,12 +63,12 @@ const AnchorLink = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 10px;
   position: absolute;
   top: 10px;
   right: 10px;
   & svg {
-    stroke-width: 1;
+    font-size: 22px;
   }
   @media screen and (min-width: 760px) {
     padding: 20px;
@@ -81,13 +81,14 @@ const Project = ({
   projectBannerAlt,
   projectLink,
   projectStack,
+  gitLink,
 }) => {
   let i = 1;
   return (
     <>
       <ProjectContainer>
         <a href={projectLink} target='_blank' rel='noopener noreferrer'>
-          <img src={projectBanner} alt={projectBannerAlt} width='100%' />
+          <img src={projectBanner} alt={projectBannerAlt} width='100%' l />
           <StackContainer>
             {projectStack.map((codeName) => {
               return (
@@ -98,12 +99,13 @@ const Project = ({
             })}
           </StackContainer>
         </a>
-        <AnchorLink
-          href={projectLink}
-          target='_blank'
-          rel='noopener noreferrer'>
-          <BsArrowUpRight />
-        </AnchorLink>
+        {gitLink === 'false' ? (
+          <></>
+        ) : (
+          <AnchorLink href={gitLink} target='_blank' rel='noopener noreferrer'>
+            <BsGithub />
+          </AnchorLink>
+        )}
       </ProjectContainer>
     </>
   );
