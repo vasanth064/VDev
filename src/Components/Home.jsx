@@ -8,6 +8,8 @@ import {
 } from '../Helpers/GlobalStyles';
 import SocialButtons from './SocialButtons';
 import { AiOutlineDownload } from 'react-icons/ai';
+import vasanth from './../Assets/vdev Assets/vasanth.webp';
+
 const Container = styled.section`
   display: flex;
   flex-direction: column;
@@ -60,10 +62,7 @@ function Home({ data }) {
   console.log(sData);
   return (
     <Container id='home'>
-      <ImageSection
-        src='https://firebasestorage.googleapis.com/v0/b/vdev-ed27e.appspot.com/o/vdev%2FIMG_20230112_141522_296.jpg?alt=media&token=5a28f01e-46fa-4933-9e87-c4b861024047'
-        alt='Vasanth '
-      />
+      <ImageSection src={vasanth} alt='Vasanth ' />
       <ContentSection>
         <ContentContainer>
           <ContentHeader>

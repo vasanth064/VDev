@@ -10,7 +10,7 @@ import {
 import SocialButtons from './SocialButtons';
 import { MdEmail } from 'react-icons/md';
 import { RiSendPlaneFill } from 'react-icons/ri';
-
+import bg from './../Assets/bg.webp';
 const Container = styled.section`
   padding: 15px;
   gap: 15px;
@@ -24,7 +24,7 @@ const Container = styled.section`
 
 const ImageSection = styled.div`
   position: relative;
-  background: url('https://firebasestorage.googleapis.com/v0/b/vdev-ed27e.appspot.com/o/vdev%2Fbg.png?alt=media&token=6d4e892c-522b-4532-a980-c834c858e336');
+  background: url(${bg});
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
